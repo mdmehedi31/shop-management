@@ -1,0 +1,77 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top: 5%;">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <h1>Add Category</h1>
+                </div>
+
+                <!--{{ category | json }}-->
+                <form (ngSubmit)="formSubmit()">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Category Name: </mat-label>
+                        <input [(ngModel)]="category.categoryName" name="categoryName" matInput
+                            placeholder="Enter Here">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Category Description: </mat-label>
+                        <textarea [(ngModel)]="category.categoryDesc" name="categoryDesc" matInput
+                            placeholder="Write Category Description"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Adding Date</mat-label>
+                        <input [(ngModel)]="category.addingDate" name="addingDate" matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+
+                    <div class="container" style="margin-top: 10px;">
+                        <button mat-fab extended color="primary">
+                            Add Category
+                        </button>
+                        <button style="margin-left: 10px;" mat-fab extended color="primary">
+                            Clear
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<table class="cat_table">
+    <thead>
+        <tr>
+            <th>SL</th>
+            <th>Category Name</th>
+            <th>Category Description</th>
+            <th>Adding Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cat of categoryList">
+            <td></td>
+            <td>{{cat.categoryName}}</td>
+            <td>{{cat.categoryDesc}}</td>
+            <td>{{cat.addingDate}}</td>
+            <td>
+                
+                    <button (click)="deleteCategory(cat.catId)" style="margin-right: 20px; margin-bottom: 10px;" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                    <button [routerLink]="'/category-update/'+cat.catId" style="margin-bottom: 10px; margin-left: 20px;" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+                        <mat-icon>update</mat-icon>
+                      </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

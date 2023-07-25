@@ -1,0 +1,41 @@
+
+.full-width{
+    width: 100%;
+}
+
+
+.cat_table{
+   margin-top: 30px;
+   width: 100%;
+   border: 1px solid black;
+   border-collapse: collapse;
+   border-spacing: 5%;
+   margin-left: 30px;
+   margin-right: 50px;
+   font-size: medium;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   border-color: brown;
+}
+
+tr:hover{
+    background-color: dodgerblue;
+}
+th {
+    text-align: center;
+}
+
+tbody{
+    text-align: center;
+}
+
+.cat_table
+{
+    counter-reset: Serial;           
+} 
+
+
+.cat_table td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: counter(Serial); /* Display the counter */
+}

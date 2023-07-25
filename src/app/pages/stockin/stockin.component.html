@@ -1,0 +1,159 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 offset-md-4">
+        <div class="container">
+          <h1>Stock In</h1>
+        </div>
+        <div>
+
+          <!-- {{ stock | json }} -->
+          <form (ngSubmit)="stockIn()">
+
+            <mat-form-field class="margin-left">
+              <mat-label>Select Category</mat-label>
+              <mat-select name="categoryName"
+               [(ngModel)]="stock.categoryName" (ngModelChange)="getBrandByCategory()">
+                <mat-option *ngFor="let c of catList" [value]="c.categoryName">{{c.categoryName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="margin-left">
+              <mat-label>Select Brand</mat-label>
+              <mat-select name="brandName" [(ngModel)]="stock.brandName">
+                <mat-option *ngFor="let b of brandList" [value]="b.brandName"> {{b.brandName}} </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+
+
+
+            <!-- <mat-form-field class="margin-left">
+                <mat-label>Product Name</mat-label>
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  *ngFor="let option of options" [value]="option"
+                  <mat-option>
+                    Option 1
+                  </mat-option>
+                  <mat-option>
+                    Option 2
+                  </mat-option>
+                  <mat-option>
+                    Option 3
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field> -->
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Product Name </mat-label>
+              <input name="productName" 
+              [(ngModel)]="stock.productName" 
+              matInput
+              placeholder="Enter Here">
+            </mat-form-field>
+
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Product Amount</mat-label>
+              <input name="totalProduct" 
+              [(ngModel)]="stock.totalProduct" 
+              (ngModelChange)="stock.totalProduct=+$event;
+                productPrice()" matInput placeholder="Enter Here">
+            </mat-form-field>
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Unit Price </mat-label>
+              <input name="unitPrice" [(ngModel)]="stock.unitPrice"
+               (ngModelChange)="stock.unitPrice=+$event;
+                productPrice()" matInput placeholder="Enter Here">
+            </mat-form-field>
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Total Price </mat-label>
+              <input readonly name="totalProductPrice" 
+              [(ngModel)]="stock.totalProductPrice" matInput
+                placeholder="Enter Here">
+            </mat-form-field>
+
+
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Description </mat-label>
+              <textarea name="productDescription" [(ngModel)]="stock.productDescription" matInput
+                placeholder="Enter Here"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Unit Selling Price </mat-label>
+              <input name="unitSellingPrice" [(ngModel)]="stock.unitSellingPrice" matInput placeholder="Enter Here">
+            </mat-form-field>
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Shop Product Amount</mat-label>
+              <input name="shopProductAmount" [(ngModel)]="stock.shopProductAmount" 
+              (ngModelChange)="stock.shopProductAmount=+$event;
+                productPrice()" matInput placeholder="Enter Here">
+            </mat-form-field>
+
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Shop Shelf No </mat-label>
+              <input name="shopShelfNo" [(ngModel)]="stock.shopShelfNo" matInput placeholder="Enter Here">
+            </mat-form-field>
+
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Shop Shelf Level No </mat-label>
+              <input name="shopShelfLevelNo" [(ngModel)]="stock.shopShelfLevelNo" matInput placeholder="Enter Here">
+            </mat-form-field>
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Wear House Product Amount </mat-label>
+              <input readonly name="wearHouseProductAmount" [(ngModel)]="stock.wearHouseProductAmount" (ngModelChange)="stock.wearHouseProductAmount=+$event;
+                productPrice()" matInput placeholder="Enter Here">
+            </mat-form-field>
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Wear House Shelf No </mat-label>
+              <input name="wearHouseShelfNo" [(ngModel)]="stock.wearHouseShelfNo" matInput placeholder="Enter Here">
+            </mat-form-field>
+
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Wear House Shelf Level No </mat-label>
+              <input name="wearHouseShelfLevelNo" [(ngModel)]="stock.wearHouseShelfLevelNo" matInput
+                placeholder="Enter Here">
+            </mat-form-field>
+
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Adding Date</mat-label>
+              <input name="stockInDate" [(ngModel)]="stock.stockInDate" matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="margin-left" appearance="outline">
+              <mat-label>Add By </mat-label>
+              <input name="stockInBy" [(ngModel)]="stock.stockInBy" matInput placeholder="Enter Here">
+            </mat-form-field>
+
+            <div class="container" style="margin-top: 10px;">
+              <button mat-fab extended color="primary">
+                Stock In
+              </button>
+              <button style="margin-left: 10px;" mat-fab extended color="primary">
+                Clear
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
